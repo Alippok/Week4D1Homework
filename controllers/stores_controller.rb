@@ -18,11 +18,28 @@ end
 post '/stores' do#create
   @store = Store.new( params )
   @store.save()
-  redirect to '/'
+  redirect to ('/')
 end
 
 get '/stores/:id' do#show
   @store = Store.find( params['id'] )
   erb(:"stores/show")
+end
+
+get '/stores/:id/edit' do#edit
+  @store = Store.find( params['id'] )
+  erb(:"stores/edit")
+end 
+
+
+post '/stores/:id' do#update
+  @store = Store.new( params )
+  @store.update()
+  redirect to("/stores/#{ params['id'] }")
+end
+
+post '/stores/:id/delete' do#destroy
+  Store.delete( params['id'] )  
+  redirect to '/stores'
 end
 

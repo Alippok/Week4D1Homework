@@ -25,6 +25,20 @@ class Store
     Store.run_sql( sql )
   end
 
+  def update()
+    sql = "UPDATE stores SET 
+    name = '#{ @name }',
+    address = '#{ @address }',
+    stock_type = '#{ @stock_type }'
+    WHERE id = '#{ @id }'"
+    Store.run_sql(sql)
+  end
+
+
+  def self.delete(id)
+    sql = "DELETE FROM stores WHERE id = '#{id}'"
+    Store.run_sql(sql)
+  end
 
   def self.find(id)
     sql = "SELECT * FROM stores WHERE id = #{id} "
