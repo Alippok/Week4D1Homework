@@ -1,0 +1,10 @@
+<h1><%= @pet.name %></h1>
+
+<h3>Type:</h3>
+<p><%= @pet.type %></p>
+
+<h3>Picture:</h3>
+<img src ="<%= @pet.picture_url %>" class="pet_picture">
+
+<a href="/pets/<%= @pet.id %>"><button>Edit Pet</button></a>
+<form action="/pets/<%= @pet.id %>/delete" method="post"><input type="submit" value="Remove Pet"></form>

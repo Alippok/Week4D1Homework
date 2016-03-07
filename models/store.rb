@@ -34,6 +34,12 @@ class Store
     Store.run_sql(sql)
   end
 
+  def pets
+    sql = "SELECT * FROM pets WHERE store_id=#{@id}"
+    result = Store.run_sql(sql)
+    pets = result.map{|pet| Pet.new(pet)}
+  end
+
 
   def self.delete(id)
     sql = "DELETE FROM stores WHERE id = '#{id}'"

@@ -1,4 +1,5 @@
 require_relative('../models/store.rb')
+require_relative('../models/pet.rb')
 
 get '/' do
  erb( :home )
@@ -23,6 +24,7 @@ end
 
 get '/stores/:id' do#show
   @store = Store.find( params['id'] )
+  @pets = @store.pets
   erb(:"stores/show")
 end
 

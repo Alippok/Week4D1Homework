@@ -1,0 +1,19 @@
+<div class="add_pet">
+  <form action="/pets" method="post">
+    
+    <legend>Add a Pet to this Store</legend>
+      <input type="hidden" name="store_id" value="<%= @store.id %>">
+
+      <label>Pet Name:</label>
+      <input type="text" name="name">
+
+      <label>Pet Type:</label>
+      <input type="text" name="type">
+
+      <label>Pet Picture</label>
+      <input type="url" name="picture_url">
+
+      <input type="submit" value="Add Pet">
+
+  </form>
+</div>

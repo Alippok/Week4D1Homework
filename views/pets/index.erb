@@ -1,0 +1,14 @@
+<div class="instore_pets">
+  <h2>Pets currently in store</h3>
+  <% @pets.each do |pet| %>
+
+  <h3>Name:</h3>
+  <p><%= pet.name %></p>
+
+  <h3>Type:</h3>
+  <p><%= pet.type %></p>
+
+  <a href="/pets/<%= pet.id %>"><button type="submit">View Pet</button></a>
+
+  <% end %>
+</div>
