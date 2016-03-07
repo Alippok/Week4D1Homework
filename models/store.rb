@@ -3,7 +3,7 @@ require('pg')
 class Store 
 
   attr_reader :name, :address, :stock_type, :id
-
+  @@db_credentials = { dbname: 'pet_store_manager', host: 'localhost' }
   def initialize(options)
     @name = options["name"]
     @address = options["address"]
@@ -12,6 +12,42 @@ class Store
   end
 
 
+  def save()
+    sql =  "INSERT INTO stores(
+      name, 
+      address, 
+      stock_type )
+      VALUES (
+      '#{@name}',
+      '#{@address}',
+      '#{@stock_type}' )"
+    Store.run_sql(sql)
+  end
+  
+
+  def self.all()
+    sql = "SELECT * FROM stores"
+    result = Store.run_sql(sql)
+    @stores = result.map{|store| Store.new(store)}
+    return @stores
+  end
+
+  
+
+
+
+
+  private
+
+  def self.run_sql(sql)
+    begin
+      db = PG.connect( @@db_credentials )
+      result = db.exec(sql)
+    ensure
+      db.close
+    end
+    return result
+  end
 
 
 
