@@ -8,7 +8,7 @@ class Pet
     @name = options['name']
     @type = options['type']
     @store_id = options['store_id']
-    @id = nil || optiions['id']
+    @id = nil || options['id']
   
   end
 
