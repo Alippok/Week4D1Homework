@@ -18,10 +18,19 @@ class Store
       address, 
       stock_type )
       VALUES (
-      '#{@name}',
-      '#{@address}',
-      '#{@stock_type}' )"
-    Store.run_sql(sql)
+      '#{ @name }',
+      '#{ @address }',
+      '#{ @stock_type }' )"
+
+    Store.run_sql( sql )
+  end
+
+
+  def self.find(id)
+    sql = "SELECT * FROM stores WHERE id = #{id} "
+    result = Store.run_sql( sql )
+    stores = result.map{ |store| Store.new(store) }
+    return stores.first
   end
   
 

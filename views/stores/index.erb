@@ -1,0 +1,20 @@
+<h1>My Stores</h1>
+
+<% @stores.each do |store| %>
+
+<div class="store_ind">
+  
+  <h3>Store Name</h3>
+  <p><%= store.name %></p>
+
+  <!-- <h3>Store Address</h3>
+  <p><%= store.address %></p>
+
+  <h3>Store Stock Type</h3>
+  <p><%= store.stock_type %></p> -->
+
+  <a href="/stores/<%= store.id %>"><button type="submit">View Store</button></a>
+
+</div>
+
+<% end %>

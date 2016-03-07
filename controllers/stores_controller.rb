@@ -10,6 +10,7 @@ get '/stores' do#index
   erb ( :"stores/index" )
 end
 
+
 get '/stores/new' do#new
   erb( :"stores/new" ) 
 end
@@ -17,5 +18,11 @@ end
 post '/stores' do#create
   @store = Store.new( params )
   @store.save()
-  redirect to erb( :home )
+  redirect to '/'
 end
+
+get '/stores/:id' do#show
+  @store = Store.find( params['id'] )
+  erb(:"stores/show")
+end
+
