@@ -1,0 +1,15 @@
+CREATE TABLE stores(
+id SERIAL8 PRIMARY KEY,
+name VARCHAR(255),
+address VARCHAR(255),
+stock_type VARCHAR(255),
+);
+
+
+CREATE TABLE pets(
+id SERIAL8 PRIMARY KEY,
+name VARCHAR(255),
+type VARCHAR(255),
+store_id INT2 REFERENCES stores(id)
+)
+
