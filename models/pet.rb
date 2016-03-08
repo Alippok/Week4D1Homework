@@ -41,6 +41,11 @@ class Pet
     return pets.first
   end
 
+  def self.delete(id)
+    sql = "DELETE FROM pets WHERE id='#{id}'"
+    Pet.run_sql(sql)
+  end
+
   private
 
   def self.run_sql(sql)
