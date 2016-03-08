@@ -9,6 +9,7 @@ end
 
 get '/pets/:id' do
   @pet = Pet.find( params['id'] )
+  @store = @pet.store
   erb(:"pets/show")
 end
 
