@@ -14,8 +14,14 @@ get '/pets/:id' do
 end
 
 get '/pets/:id/edit' do
-  @pet = Pets.find( params['id'] )
+  @pet = Pet.find( params['id'] )
   erb(:"pets/edit")
+end
+
+post '/pets/:id' do
+  @pet = Pet.new( params )
+  @pet.update
+  redirect to("/stores/#{params['store_id']}")
 end
 
 post '/pets/:id/delete' do

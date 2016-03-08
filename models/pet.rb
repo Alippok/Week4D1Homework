@@ -34,6 +34,17 @@ class Pet
     return Store.new( result[0] )
   end
 
+  def update()
+    sql = "UPDATE pets SET 
+    name = '#{@name}',
+    type = '#{@type}',
+    store_id = '#{@store_id}',
+    picture_url = '#{@picture_url}'
+    WHERE id =#{@id}"
+    
+    Pet.run_sql(sql)
+  end
+
   def self.find(id)
     sql = "SELECT * FROM pets WHERE id='#{id.to_i}'"
     result = Pet.run_sql(sql)
